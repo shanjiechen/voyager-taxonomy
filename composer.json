@@ -1,0 +1,28 @@
+{
+    "name": "shanjiechen/voyager-taxonomy",
+    "description": "The taxonomy extension for voyager was inspired by drupal-taxonom.",
+    "require": {
+        "tcg/voyager": "^1.1",
+        "kalnoy/nestedset": "^4.3",
+        "maatwebsite/excel": "^3.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "善杰陈",
+            "email": "1090753786@qq.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ShanjieChen\\VoyagerTaxonomy\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ShanjieChen\\VoyagerTaxonomy\\VoyagerTaxonomyServiceProvider"
+            ]
+        }
+    }
+}
