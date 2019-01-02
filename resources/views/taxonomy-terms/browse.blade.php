@@ -168,6 +168,7 @@
                                         class="btn btn-sm btn-success btn-save-order" href="javascript:;">{{ __('voyager::generic.save') }}</a>  <a
                                         class="btn btn-sm btn-warning btn-reset-order" href="javascript:;">{{ __('voyager::taxonomy.reset') }}</a></div>
                             <div class="col-md-7">
+                                <div>{{ __('voyager::taxonomy.total_items', ['total' => $total]) }}</div>
                                 <div id="termsTree" class="terms-tree ztree">
                                 </div>
                             </div>

@@ -65,6 +65,8 @@ class TaxonomyTermController extends VoyagerBaseController
 
             return $nodes;
         }
+
+        $total = $query->count();
         // If a column has a relationship associated with it, we do not want to show that field
         $this->removeRelationshipField($dataType, 'browse');
 
@@ -77,7 +79,8 @@ class TaxonomyTermController extends VoyagerBaseController
             'vid',
             'vocabulary',
             'dataType',
-            'isModelTranslatable'
+            'isModelTranslatable',
+            'total'
         ));
     }
 
