@@ -2,7 +2,7 @@
 The Taxonomy manager for laravel voyager .
 ## use
 Has not submit to packagist and can not use to product now. But I has use it in myself project. If u have ability to develop, You can try it out and welcome to the development.
-1. Clone or download, put it to your project directory, example ./pacakages.
+1. Clone or download, put it to your project directory, example ./packages.
 2. Edit composer.json, Add below
 ```
 "repositories": {
