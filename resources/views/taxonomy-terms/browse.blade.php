@@ -130,7 +130,7 @@
             </a>
         @endcan
         @include('voyager::multilingual.language-selector')
-        <div class="panel panel-bordered panel-importer" style="display: none">
+        <div class="panel panel-bordered panel-importer collapse">
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-12">
@@ -164,7 +164,7 @@
                 <div class="panel panel-bordered" style="min-height: 600px">
                     <div class="panel-body">
                         <div class="row">
-                            <div class="alert-order alert alert-warning alert-mini fade in" role="alert"><span>*排序已经改变, 点击保存按钮后生效</span> <a
+                            <div class="alert-order alert alert-warning alert-mini collapse" role="alert"><span>{{ __('voyager::taxonomy.order_change')}}</span> <a
                                         class="btn btn-sm btn-success btn-save-order" href="javascript:;">{{ __('voyager::generic.save') }}</a>  <a
                                         class="btn btn-sm btn-warning btn-reset-order" href="javascript:;">{{ __('voyager::taxonomy.reset') }}</a></div>
                             <div class="col-md-7">
@@ -315,7 +315,8 @@
 //                beforeRename: beforeRename,
 //                beforeEditName: beforeEditName,
                 onClick: onClickNode,
-                beforeRemove: beforeRemove
+                beforeRemove: beforeRemove,
+                onDrop: onDrop
             }
         };
 
@@ -385,9 +386,43 @@
             $("#addBtn_"+treeNode.tId).unbind().remove();
         };
 
+        function onDrop(event, treeId, treeNodes, targetNode, moveType) {
+            if (moveType != null)
+                $(".alert-order").fadeIn('slow');
+        };
+
+        function nodesToSimpleData(nodes) {
+            $.each(nodes, function(index, item) {
+                nodes[index] = {
+                    id: item.id,
+                    name: item.name,
+                    parent_id: item.parent_id,
+                    vid: item.vid,
+                    order: index
+                }
+                if (item.children && item.children.length > 0) {
+                    nodes[index].children = item.children
+                    nodesToSimpleData(item.children);
+                }
+            });
+            return nodes;
+        }
+
         $(".btn-save-order").on("click", function() {
-            var nodes = zTreeObj.getNodes();
-            console.log(nodes);
+            var orderUrl = "{{ route('voyager.taxonomy-terms.rebuild_tree', [$vid]) }}";
+            var nodes = $.extend(true, {}, zTreeObj.getNodes());
+            nodes = nodesToSimpleData(nodes)
+
+//            console.log(nodes);
+            $.post(orderUrl, {nodes:nodes}, function(res) {
+                zTreeObj.reAsyncChildNodes(null, 'refresh');
+                $(".alert-order").fadeOut("slow");
+            }).fail(function(xhr, errorText, errorType) {
+//                console.log(xhr, errorText, errorType)
+                toastr.error(errorType +":"+ errorText);
+            });
+
+
             // zTreeObj.reAsyncChildNodes(null, 'refresh');
         });
 

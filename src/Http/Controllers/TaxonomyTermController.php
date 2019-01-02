@@ -56,7 +56,8 @@ class TaxonomyTermController extends VoyagerBaseController
             // Return json nodes tree for zTree.
             $nodes = $query->where('parent_id', $request->input('id'))
                 ->withCount(['children as isParent'])
-                ->orderBy('order','asc')
+                ->defaultOrder()
+//                ->orderBy('order','asc') // 用nestedset的排序更好,弃用自定义排序字段
                 ->get();
 
             if ($isModelTranslatable) {
@@ -288,6 +289,20 @@ class TaxonomyTermController extends VoyagerBaseController
         }
 
         return redirect()->route("voyager.{$dataType->slug}.index", [$vid])->with($data);
+    }
+
+
+    /**
+     * Order and rebuild tree
+     * @param Request $request
+     * @param null $vid
+     */
+    public function rebuildTree(Request $request, $vid = null) {
+        $nodes = $request->input('nodes');
+        $vocabulary = TaxonomyVocabulary::findOrFail($vid);
+        $vocabulary->terms()->rebuildTree($nodes);
+
+        return ['message' => 'ok'];
     }
 
 

@@ -16,5 +16,6 @@ return [
     'start_line' => '起始行号',
     'irreversible' => '该操作是不可逆的',
     'reset' => '重置',
-    'total_items' => '共 :total 项。'
+    'total_items' => '共 :total 项。',
+    'order_change' => '*排序已经改变, 点击保存按钮后生效',
 ];

@@ -23,6 +23,9 @@ Route::group(['as' => 'voyager.'], function () {
             // “_” Used to distinguish DataType slug.
             ->name('taxonomy-terms.import');
 
+        Route::post('taxonomy-vocabularies/{vid?}/terms/rebuild_tree', $namespace.'TaxonomyTermController@rebuildTree')
+            ->name('taxonomy-terms.rebuild_tree');
+
         event(new RoutingAdminAfter());
     });
     event(new RoutingAfter());
