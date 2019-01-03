@@ -416,6 +416,7 @@
 //            console.log(nodes);
             $.post(orderUrl, {nodes:nodes}, function(res) {
                 zTreeObj.reAsyncChildNodes(null, 'refresh');
+                toastr.success("{{ __('voyager::taxonomy.order_success') }}");
                 $(".alert-order").fadeOut("slow");
             }).fail(function(xhr, errorText, errorType) {
 //                console.log(xhr, errorText, errorType)

@@ -18,4 +18,5 @@ return [
     'reset' => '重置',
     'total_items' => '共 :total 项。',
     'order_change' => '*排序已经改变, 点击保存按钮后生效',
+    'order_success' => '排序成功。'
 ];
