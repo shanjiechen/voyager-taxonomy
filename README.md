@@ -7,9 +7,14 @@ Based mainly on the [nestedset][1]. It has vocabulary and terms manager. And it 
 ## use
 I don't recommend using it in a production environment. But I has use it in myself project. If u have ability to develop, You can try it out and welcome to the development.
 1. `composer require shanjiechen/voyager-taxonomy`
-2. `php artisan voyager-taxonomy:install`, this will create two tables `taxonomy-vocabluaries` and `taxonomy-terms`
+2. `php artisan voyager-taxonomy:install`, this will create two tables `taxonomy-vocabularies` and `taxonomy-terms`
 3. `php artisan vendor:publish`, Publish `ShanjieChen\VoyagerTaxonomy\VoyagerTaxonomyServiceProvider`, this will publish voyager-taxonomy assets.
-4. To your voyager backend create BREAD of data tables `taxonomy-vocabaries` and `taxonomy-terms`, this will create menu automatic, remove taxonomy-terms menu, we will not use this.
+4. To your voyager backend create BREAD of data tables `taxonomy-vocabularies` and `taxonomy-terms`, options like below:
+    + taxonomy_vocabularies Model Name: `ShanjieChen\VoyagerTaxonomy\Models\TaxonomyVocabulary`
+    + taxonomy_vocabularies Controller Name: `\ShanjieChen\VoyagerTaxonomy\Http\Controllers\TaxonomyVocabularyController`
+    + taxonomy_terms Model Name: `ShanjieChen\VoyagerTaxonomy\Models\TaxonomyTerm`
+this will create menu automatic, remove taxonomy-terms menu, we will not use this.
+> In the future I'll call it seeders and write it into the installation command
 5. Try use it. Browse /admin/taxonomy-vocabularies
 
 
