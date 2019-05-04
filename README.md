@@ -1,3 +1,5 @@
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
+
 # voyager-taxonomy | [中文版][4]
 The Taxonomy manager and taxonomy custom field for laravel voyager.It can easily help you create and use categories. 
 Based mainly on the [nestedset][1]. It has vocabulary and terms manager. And it used ztree.js, to create a treeview for crud taxonomy terms and can order terms by drap&drop.
