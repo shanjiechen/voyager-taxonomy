@@ -1,4 +1,4 @@
-[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu) [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 
 # voyager-taxonomy | [中文版][4]
 The Taxonomy manager and taxonomy custom field for laravel voyager.It can easily help you create and use categories. 
